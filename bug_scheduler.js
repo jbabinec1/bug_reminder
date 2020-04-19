@@ -68,7 +68,7 @@ rule.minute = 20;
            userzArray.forEach(userId => { 
            console.log('working schedule');    
           app.client.chat.postMessage({
-            token: 'xoxb-994671267186-1009690861430-ykLPXscpNeX9DbglrIXBn4gJ',//context.botToken,
+            token: context.botToken,
             bot_id: "USLACKBOT",
             channel: userId,
             link_names: true,       
@@ -200,103 +200,6 @@ rule.minute = 20;
     
     } // If text sent to General channel includes keyword 'Jira' or 'rdu_qa'
   } //end of if message was posted in Random channel
-  
-  
-  
-  
-  
-  
-  // If message was sent to random channel.. Schedule message.. send DM to notjaredbabinec 
-  /* Commenting schedule out for now...
-  let bugReminderChannelNameJr = ["CV9V49RNF"];
-  
-    if (payload.channel === "C0107022LPN") {
-    if (payload.text.includes(jira_text) || payload.text.includes(rdu_qa)) {
-      
-   // let date = Date.now();
-    //  console.log(date);
-     
-      
-    let perm = await app.client.chat.getPermalink({
-    token: context.botToken,
-    channel: "C0107022LPN",
-    message_ts: payload.ts
-  });
-      
-    let userName = await app.client.users.profile.get({
-    token: context.botToken,
-    channel: "C0107022LPN",
-    user: message.user
-    
-  }); 
-     
-      // Gets Unix timestamp on time right now .. of when message is sent. 
-     let interval = Math.floor(Date.now() / 1000);
-     
-           
-      let fromUser = userName.profile.real_name; 
-      let text = "posted by ";
-      let inRandomChannel = " in *Random*"
-      let jaredChannel = ['CV9V49RNF']; // send to jared channel   //bug-reminder CV9V49RNF //U01120DLNCW is Jared channel  
-      
-      try {
-        // Schedule reminder message
-       
-        let twoUser = await jaredChannel.forEach(bugReminder => {
-          app.client.chat.scheduleMessage({
-            //memberlist = memberList
-            // The token you used to initialize your app is stored in the `context` object
-            token: context.botToken, 
-            post_at: date + 7200,   
-            bot_id: "USLACKBOT",
-            channel: bugReminder,  
-            blocks: [ 
-         {
-      type: "section",
-      text: {
-        text: payload.text,//"```"+ payload.text + "```",
-        type: "mrkdwn"
-        },  
-     
-    },
-  
-  {
-  "type": "context",
-  "elements": [
-      {
-          "type": "mrkdwn",
-          "text": perm.permalink
-      },
-    {
-          type: "mrkdwn",
-          text:  text + "*" +  fromUser + "*" + inRandomChannel 
-        }
-    
-  ]
-},
-                                     
-   {
-      type: "divider"
-    }  
-  ] // End of block of Jira notification stuff
-          });
-        });
-
-        // console.log(result);
-      } catch (error) {
-        console.error(error);
-      }
-
-    
-    } // If text sent to General channel includes keyword 'Jira' or 'rdu_qa'
-  } //end of if message was posted in Random channel
-  
-  */
-  
-  
-  // schedule message test end..   
-  
-  
   
   
   
